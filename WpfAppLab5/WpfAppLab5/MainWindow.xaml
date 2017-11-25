@@ -1,0 +1,71 @@
+﻿<Window x:Class="WpfAppLab5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppLab5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ListView Grid.Column="0"
+                  Grid.RowSpan="2"
+                  Grid.Row="0"
+                  ItemsSource="{Binding Devices, Mode=TwoWay}"
+                  SelectedItem="{Binding SelectedDevice}"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                  HorizontalContentAlignment="Stretch"
+                  VerticalContentAlignment="Stretch">
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Width="auto"
+                                    Header="ClassGuid"
+                                    DisplayMemberBinding="{Binding ClassGuid, Mode=TwoWay}"/>
+                    <GridViewColumn Width="auto"
+                                    Header="HardWareID"
+                                    DisplayMemberBinding="{Binding HardWareID, Mode=TwoWay}"/>
+                    <GridViewColumn Width="auto"
+                                    Header="DeviceID"
+                                    DisplayMemberBinding="{Binding DeviceID, Mode=TwoWay}"/>
+                    <GridViewColumn Width="auto"
+                                    Header="Manufacturer"
+                                    DisplayMemberBinding="{Binding Manufacturer, Mode=TwoWay}"/>
+                    <GridViewColumn Width="auto"
+                                    Header="Name"
+                                    DisplayMemberBinding="{Binding Name, Mode=TwoWay}"/>
+                    <GridViewColumn Width="auto"
+                                    Header="Description"
+                                    DisplayMemberBinding="{Binding Description, Mode=TwoWay}"/>
+                    <GridViewColumn Width="auto"
+                                    Header="PathName"
+                                    DisplayMemberBinding="{Binding PathName, Mode=TwoWay}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        <Button Content="Отключить" 
+                FontSize="30"
+                Grid.Row="0" 
+                Grid.Column="1" 
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" 
+                Command="{Binding DisableDevice}" />
+        
+        <Button Content="Включить" 
+                FontSize="30"
+                Grid.Row="1" 
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" 
+                Command="{Binding EnableDevice}"/>
+
+    </Grid>
+</Window>
